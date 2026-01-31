@@ -18,7 +18,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+
 }
 
 .maze {
@@ -50,12 +50,16 @@
   width: 80%;
   height: 80%;
   object-fit: contain;
+
 }
 
 .controls button {
-  font-size: 18px;
-  padding: 6px 10px;
-  margin: 2px;
+  font-size: 15px;
+  color: black;
+  background-color: #4cc9f0;
+  border: 1px solid;
+  border-radius: 5px;
+  margin: 3px;
 }
 
 .win {

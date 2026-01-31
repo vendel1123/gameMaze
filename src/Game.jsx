@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./MazeGame.css";
+import "../public/girl.png"
 
 const maze = [
   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
@@ -91,7 +92,7 @@ export default function MazeGame() {
               >
                 {x === finish.x && y === finish.y && (
                   <img
-                    src={goalType === "girl" ? "/public/girl.png" : "/boy.png"}
+                    src={goalType === "girl" ? "girl.png" : "boy.png"}
                     alt="goal"
                     className="goal-img"
                   />
@@ -102,12 +103,14 @@ export default function MazeGame() {
         </div>
 
         <div className="controls">
-          <button onClick={() => movePlayer(0, -1)}>⬆</button>
+
           <div>
             <button onClick={() => movePlayer(-1, 0)}>⬅</button>
+                      <button onClick={() => movePlayer(0, -1)}>⬆</button>
+            <button onClick={() => movePlayer(0, 1)}>⬇</button>
             <button onClick={() => movePlayer(1, 0)}>➡</button>
           </div>
-          <button onClick={() => movePlayer(0, 1)}>⬇</button>
+          
         </div>
       </div>
     </div>
