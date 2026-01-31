@@ -1,0 +1,62 @@
+*{
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body{
+  height: 100vh;
+  background: url(../public/pap.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  touch-action: none;
+}
+
+
+.cover{
+
+  padding: 10px;
+  border-radius: 10px;
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.buttonHome{
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.noBtn{
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.rules{
+  border: dashed 3px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.rules p{
+  font-size: 10px;
+}
+
+.rules button{
+  padding: 10px;
+  border: solid 1px;
+  border-radius: 5px;
+
+}
+
