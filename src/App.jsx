@@ -10,6 +10,7 @@ function App() {
     <>
       <div className='rules'>
 
+        <img src="rose.png" alt="" />
         <h1 style={{
           color: "red",
           fontSize: "15px"

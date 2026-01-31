@@ -73,3 +73,9 @@
   align-items: center;
   justify-content: center;
 }
+.win-message {
+  display: flex;
+  align-items: center;   /* függőlegesen középre */
+  justify-content: center; /* vízszintesen középre */
+  gap: 10px; /* távolság a képek és a szöveg között */
+}

@@ -3,21 +3,21 @@ import "./MazeGame.css";
 import "../public/girl.png"
 
 const maze = [
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-  [1,0,0,0,1,0,0,0,0,0,1,0,0,0,1],
-  [1,0,1,0,1,0,1,1,1,0,1,0,1,0,1],
-  [1,0,1,0,0,0,0,0,1,0,0,0,1,0,1],
-  [1,0,1,1,1,1,1,0,1,1,1,0,1,0,1],
-  [1,0,0,0,0,0,1,0,0,0,1,0,0,0,1],
-  [1,1,1,1,1,0,1,1,1,0,1,1,1,0,1],
-  [1,0,0,0,1,0,0,0,1,0,0,0,1,0,1],
-  [1,0,1,0,1,1,1,0,1,1,1,0,1,0,1],
-  [1,0,1,0,0,0,0,0,0,0,0,0,1,0,1],
-  [1,0,1,1,1,1,1,1,1,1,1,0,1,0,1],
-  [1,0,0,0,0,0,0,0,0,0,1,0,0,0,1],
-  [1,1,1,1,1,1,1,1,1,0,1,1,1,0,1],
-  [1,0,0,0,0,0,0,0,1,0,0,0,0,0,1],
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1],
+  [1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1],
+  [1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1],
+  [1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1],
+  [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1],
+  [1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1],
+  [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1],
+  [1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1],
+  [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
+  [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1],
+  [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1],
+  [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
 
 const finish = { x: 13, y: 13 };
@@ -26,7 +26,7 @@ export default function MazeGame() {
   const [player, setPlayer] = useState({ x: 1, y: 1 });
   const [won, setWon] = useState(false);
 
-  // választható: "girl" vagy "boy"
+
   const [goalType] = useState("girl");
 
   const movePlayer = (dx, dy) => {
@@ -58,14 +58,24 @@ export default function MazeGame() {
       <div className="game">
         {won && (
           <div className="win">
-            Can i be your valentine?
-            <button onClick={() => {
-              setPlayer({ x: 1, y: 1 });
-              setWon(false);
-            }}>
-              <p style={{
-                marginTop:"10px"
-              }}>Yes (there is no other option)</p>
+            <div className="win-message">
+              <img src="rosee.png" alt="left" className="side-img" />
+              <span>Can I be your valentine?</span>
+              <img src="rosee.png" alt="right" className="side-img" />
+            </div>
+            <button
+              onClick={() => {
+                setPlayer({ x: 1, y: 1 });
+                setWon(false);
+              }}
+              style={{
+                marginTop: "5px",
+                padding: "10px",
+                borderRadius: "10px",
+
+              }}
+            >
+              Yes (there is no other option)
             </button>
           </div>
         )}
@@ -80,15 +90,14 @@ export default function MazeGame() {
             row.map((cell, x) => (
               <div
                 key={`${x}-${y}`}
-                className={`cell ${
-                  x === finish.x && y === finish.y
+                className={`cell ${x === finish.x && y === finish.y
                     ? "finish"
                     : cell === 1
-                    ? "wall"
-                    : player.x === x && player.y === y
-                    ? "player"
-                    : "path"
-                }`}
+                      ? "wall"
+                      : player.x === x && player.y === y
+                        ? "player"
+                        : "path"
+                  }`}
               >
                 {x === finish.x && y === finish.y && (
                   <img
@@ -106,11 +115,11 @@ export default function MazeGame() {
 
           <div>
             <button onClick={() => movePlayer(-1, 0)}>⬅</button>
-                      <button onClick={() => movePlayer(0, -1)}>⬆</button>
+            <button onClick={() => movePlayer(0, -1)}>⬆</button>
             <button onClick={() => movePlayer(0, 1)}>⬇</button>
             <button onClick={() => movePlayer(1, 0)}>➡</button>
           </div>
-          
+
         </div>
       </div>
     </div>
