@@ -1,28 +1,29 @@
 :root {
-  --cell: min(calc(844px / 15), calc(260px / 15));
+  /* A cellák mérete mindig a képernyőhöz igazodik */
+  --cell: min(calc(90vw / 15), calc(90vh / 15));
 }
 
 .frame {
-  width: 844px;
-  height: 390px;
-  overflow: hidden;
-
+  width: 100vw;       /* a teljes képernyő szélessége */
+  height: 100vh;      /* a teljes képernyő magassága */
   display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.game {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-}
-
 .maze {
   display: grid;
+  grid-template-columns: repeat(15, var(--cell)); /* 15 oszlop */
+  grid-auto-rows: var(--cell);                    /* sorok ugyanakkorák */
+  gap: 2px;                                       /* kis távolság a cellák között */
   margin-top: 8px;
 }
 
@@ -31,12 +32,20 @@
   height: var(--cell);
 }
 
-.wall { background: #4cc9f0; }
-.path { background: #fff; }
+.wall { 
+  background: #4cc9f0; 
+}
+
+.path { 
+  background: #fff; 
+}
 
 .player {
-    background: url("../public/boy.png");
-    background-size: cover;
+  width: 100%;
+  height: 100%;
+  background: url("../public/boy.png");
+  background-size: cover;
+  background-position: center;
 }
 
 .finish {
@@ -49,8 +58,11 @@
 .goal-img {
   width: 80%;
   height: 80%;
-  object-fit: contain;
+  object-fit: contain; /* mindig a cellába illeszkedik */
+}
 
+.controls {
+  margin-top: 10px;
 }
 
 .controls button {
@@ -60,6 +72,7 @@
   border: 1px solid;
   border-radius: 5px;
   margin: 3px;
+  padding: 5px 10px;
 }
 
 .win {
@@ -72,10 +85,23 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
+
 .win-message {
   display: flex;
-  align-items: center;   /* függőlegesen középre */
-  justify-content: center; /* vízszintesen középre */
+  align-items: center;
+  justify-content: center;
   gap: 10px; /* távolság a képek és a szöveg között */
+}
+
+/* Reszponzív szöveg kisebb képernyőkre */
+@media (max-width: 500px) {
+  .win {
+    font-size: 20px;
+  }
+  .controls button {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
 }
