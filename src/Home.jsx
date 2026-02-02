@@ -31,6 +31,7 @@ export default function Home() {
         <Modal
           title="Hm"
           message="Jól gondold meg!"
+          text="Akkor sem"
           onClose={() => {
             setShowModal(false);
             setShowModalTwo(true);
@@ -41,7 +42,8 @@ export default function Home() {
         <Modal
           title="HMMm"
           message="De fogsz."
-          onClose={() => setShowModalTwo(true)}
+          text="Jou"
+          onClose={() => setShowModalTwo(false)}
         />
       )}
     </div>

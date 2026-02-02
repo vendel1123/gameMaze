@@ -1,4 +1,4 @@
-function Modal({ title, message, onClose }) {
+function Modal({ title, message, onClose, text}) {
   return (
     <div className="overlay" onClick={onClose} style={{
       backgroundColor: "#e5b1ad",
@@ -17,7 +17,7 @@ function Modal({ title, message, onClose }) {
           padding: "10px",
           borderRadius: "10px",
           marginTop: "5px",
-        }}>Akkor sem</button>
+        }}>{text}</button>
       </div>
     </div>
     
