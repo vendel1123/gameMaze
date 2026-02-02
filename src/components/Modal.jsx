@@ -1,7 +1,7 @@
 function Modal({ title, message, onClose, text}) {
   return (
     <div className="overlay" onClick={onClose} style={{
-      backgroundColor: "#e5b1ad",
+      backgroundColor: "#1C4D8D",
       padding: "5px",
       borderRadius: "10px",
       marginTop: "5px",
@@ -9,15 +9,20 @@ function Modal({ title, message, onClose, text}) {
     }}>
       <div className="modal" onClick={(e) => e.stopPropagation()}
         style={{
-          fontSize:"15px"
+          fontSize:"15px",
         }}>
+
         <h2>{title}</h2>
-        <p >{message}</p>
+        <p>{message}</p>
         <button onClick={onClose} style={{
           padding: "10px",
           borderRadius: "10px",
           marginTop: "5px",
+          backgroundColor: "#061E29",
+          color:"#fff",
+          border:"none"
         }}>{text}</button>
+
       </div>
     </div>
     

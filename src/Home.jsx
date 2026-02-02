@@ -44,6 +44,7 @@ export default function Home() {
           message="De fogsz."
           text="Jou"
           onClose={() => setShowModalTwo(false)}
+          
         />
       )}
     </div>

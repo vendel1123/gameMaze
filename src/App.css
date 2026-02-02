@@ -24,18 +24,27 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+
 }
 
-.cover button {
+.buttonHome {
     border-radius: 5px;
     padding: 13px;
     margin-top: 10px;
+    background-color: #FDACAC;
+}
+
+.noBtn {
+  background-color: #2792d0;
+  border-radius: 5px;
+  padding: 13px;
+  margin-top: 10px;
 }
 
 
 
 .rules{
-  border: dashed 3px;
+  border: dashed 3px #D02752 ;
   border-radius: 5px;
   background-color: white;
   padding: 10px;

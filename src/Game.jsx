@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./MazeGame.css";
-import "../public/girl.png"
+import "../public/girl.png";
 
 const maze = [
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -14,9 +14,9 @@ const maze = [
   [1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1],
   [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
   [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1],
-  [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1],
+  [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2, 0, 1],
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1],
-  [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1],
+  [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 1], 
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
 
@@ -25,19 +25,26 @@ const finish = { x: 13, y: 13 };
 export default function MazeGame() {
   const [player, setPlayer] = useState({ x: 1, y: 1 });
   const [won, setWon] = useState(false);
-
-
-  const [goalType] = useState("girl");
+  const [obstacleOpen, setObstacleOpen] = useState(false);
 
   const movePlayer = (dx, dy) => {
     if (won) return;
 
     const nx = player.x + dx;
     const ny = player.y + dy;
+    const cell = maze[ny][nx];
 
-    if (maze[ny][nx] === 0) {
-      setPlayer({ x: nx, y: ny });
-      if (nx === finish.x && ny === finish.y) setWon(true);
+    if (cell === 1) return;
+
+    if (cell === 2 && !obstacleOpen) {
+      alert("Ebből az irányból nem tudsz eljutti a célba.");
+      return;
+    }
+
+    setPlayer({ x: nx, y: ny });
+
+    if (nx === finish.x && ny === finish.y) {
+      setWon(true);
     }
   };
 
@@ -51,28 +58,32 @@ export default function MazeGame() {
 
     window.addEventListener("keydown", key);
     return () => window.removeEventListener("keydown", key);
-  }, [player, won]);
+  }, [player, won, obstacleOpen]);
 
   return (
     <div className="frame">
       <div className="game">
+
         {won && (
           <div className="win">
             <div className="win-message">
               <img src="rosee.png" alt="left" className="side-img" />
-              <span>Will u be my valentine?</span>
+               <span>Will u be my <strong style={{
+                color:"#FDACAC"
+               }}>valentine</strong>?</span>
               <img src="rosee.png" alt="right" className="side-img" />
             </div>
             <button
               onClick={() => {
                 setPlayer({ x: 1, y: 1 });
                 setWon(false);
+                setObstacleOpen(false);
               }}
               style={{
-                marginTop: "5px",
-                padding: "10px",
-                borderRadius: "10px",
-
+                width:"80%",
+                borderRadius:"7px",
+                marginTop:"5px",
+                padding:"5px",
               }}
             >
               Yes (there is no other option)
@@ -94,14 +105,16 @@ export default function MazeGame() {
                     ? "finish"
                     : cell === 1
                       ? "wall"
-                      : player.x === x && player.y === y
-                        ? "player"
-                        : "path"
+                      : cell === 2
+                        ? "obstacle"
+                        : player.x === x && player.y === y
+                          ? "player"
+                          : "path"
                   }`}
               >
                 {x === finish.x && y === finish.y && (
                   <img
-                    src={goalType === "girl" ? "girl.png" : "boy.png"}
+                    src="girl.png"
                     alt="goal"
                     className="goal-img"
                   />
@@ -112,15 +125,12 @@ export default function MazeGame() {
         </div>
 
         <div className="controls">
-
-          <div>
-            <button onClick={() => movePlayer(-1, 0)}>⬅</button>
-            <button onClick={() => movePlayer(0, -1)}>⬆</button>
-            <button onClick={() => movePlayer(0, 1)}>⬇</button>
-            <button onClick={() => movePlayer(1, 0)}>➡</button>
-          </div>
-
+          <button onClick={() => movePlayer(-1, 0)}>⬅</button>
+          <button onClick={() => movePlayer(0, -1)}>⬆</button>
+          <button onClick={() => movePlayer(0, 1)}>⬇</button>
+          <button onClick={() => movePlayer(1, 0)}>➡</button>
         </div>
+
       </div>
     </div>
   );

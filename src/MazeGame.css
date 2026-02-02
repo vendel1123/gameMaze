@@ -30,6 +30,7 @@
 .cell {
   width: var(--cell);
   height: var(--cell);
+  background-color: #fff;
 }
 
 .wall { 
@@ -93,6 +94,10 @@
   align-items: center;
   justify-content: center;
   gap: 10px; /* távolság a képek és a szöveg között */
+  background-color: #EFECE3;
+  padding: 10px;
+  border-radius: 10px;
+  width: 90%;
 }
 
 /* Reszponzív szöveg kisebb képernyőkre */
