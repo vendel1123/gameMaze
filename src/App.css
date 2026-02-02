@@ -26,16 +26,13 @@ body{
   text-align: center;
 }
 
-.buttonHome{
-  border-radius: 5px;
-  padding: 5px;
+.cover button {
+    border-radius: 5px;
+    padding: 13px;
+    margin-top: 10px;
 }
 
-.noBtn{
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 10px;
-}
+
 
 .rules{
   border: dashed 3px;
