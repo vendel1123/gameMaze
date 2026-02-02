@@ -5,6 +5,7 @@ import Modal from "./components/Modal"
 export default function Home() {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
+  const [showModalTwo, setShowModalTwo] = useState(false)
 
   return (
     <div className="cover">
@@ -28,9 +29,19 @@ export default function Home() {
 
       {showModal && (
         <Modal
-          title="Nuhhuh"
-          message="Nincs ilyenre lehetőséged!"
-          onClose={() => setShowModal(false)}
+          title="Hm"
+          message="Jól gondold meg!"
+          onClose={() => {
+            setShowModal(false);
+            setShowModalTwo(true);
+          }}
+        />
+      )}
+        {showModalTwo && (
+        <Modal
+          title="HMMm"
+          message="De fogsz."
+          onClose={() => setShowModalTwo(true)}
         />
       )}
     </div>

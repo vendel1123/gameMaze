@@ -60,7 +60,7 @@ export default function MazeGame() {
           <div className="win">
             <div className="win-message">
               <img src="rosee.png" alt="left" className="side-img" />
-              <span>Can I be your valentine?</span>
+              <span>Will u be my valentine?</span>
               <img src="rosee.png" alt="right" className="side-img" />
             </div>
             <button

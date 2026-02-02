@@ -23,7 +23,7 @@
   display: grid;
   grid-template-columns: repeat(15, var(--cell)); /* 15 oszlop */
   grid-auto-rows: var(--cell);                    /* sorok ugyanakkorák */
-  gap: 2px;                                       /* kis távolság a cellák között */
+  gap: 1px;                                /* kis távolság a cellák között */
   margin-top: 8px;
 }
 

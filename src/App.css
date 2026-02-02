@@ -16,10 +16,9 @@ body{
 
 
 .cover{
-
   padding: 10px;
   border-radius: 10px;
-  width: 30%;
+  width: 50%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -48,6 +47,7 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  width: 70%;
 }
 
 .rules p{
